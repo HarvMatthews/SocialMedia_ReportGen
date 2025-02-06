@@ -2,7 +2,9 @@
 To download snapchat data:
 
 Go to settings -> Scroll to bottom -> My Data -> Select the options shown below (Ensure JSON is selected not HTML)
-<img width="830" alt="image" src="https://github.com/user-attachments/assets/02f1375a-7b7f-444f-ba60-bc057288b6da" />
+<img width="817" alt="image" src="https://github.com/user-attachments/assets/809c6ef4-e77d-4a6b-9339-e01167a27402" />
+
+
 
 Have the downloaded JSON file in same location as program stored.
 Run SnapchatStats.py
