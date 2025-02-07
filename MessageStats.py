@@ -4,6 +4,9 @@ import operator
 from BasicInfo import Findusername, FindDir
 
 
+#I could have TopMessages and Top people in one loop where I have a variable of like chats["Friends"] and chats["Contents"]
+#But I purposely have them as different functions because in future I want to be able to call the data differently
+
 '''
 If the type is 0 then will be Text messages
 if the type is 1, then will be snap messages
@@ -57,6 +60,9 @@ def FindTopMessages(Amount: int, Type: int):
 
 
 
+
+
+
 def TopWords():
     Chats_Dir =  FindDir() +  "/json/chat_history.json"
     
@@ -69,7 +75,6 @@ def TopWords():
     WordsDict = {}
     for key in Keys:
         Chat_History = json_data[key]
-        
         for chats in Chat_History:
             #if chats["From"] == Findusername():
             #Only messages that have been sent from the users account
@@ -87,10 +92,8 @@ def TopWords():
                     #Couting the words whilst being added
                     WordsDict[word] += 1
         
-        Words_Sorted = sorted(WordsDict.items(), key=operator.itemgetter(1))
-        return(Words_Sorted)
-
-
+    Words_Sorted = sorted(WordsDict.items(), key=operator.itemgetter(1))
+    return(Words_Sorted)
 
 def TopWords_Filtered(TopWords):
     filler_words = [
