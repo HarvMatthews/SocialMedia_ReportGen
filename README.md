@@ -1,3 +1,8 @@
+Very Simple Project used to self-learn git /GitHub
+
+Displays the ranking of your most messaged and snapped friends on Snapchat.
+
+---
 
 To download snapchat data:
 
@@ -14,13 +19,10 @@ Run SnapchatStats.py
 
 ------------------------------------
 ------------------------------------
-Using this to help me learn and play around with GitHub. 
-Always open to suggestion and places to improve
-
-
-Currently shows your stats of messages/snaps
-
+Always open to suggestion and places to improve.
 Shows stats as a print statement, But im currently doing the stats side then will look into displaying data nicely
+
+Currently implementing most sent and recieved words of all time (Removing filler words)
 
 -Would be interesting to in the future implement:
   - Comparing the graphs of blocked friends with friends added
