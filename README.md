@@ -1,7 +1,6 @@
 Very Simple Project used to self-learn git /GitHub
 
-Displays the ranking of your most messaged and snapped friends on Snapchat.
-
+Displays the ranking of your most messaged and snapped friends on Snapchat and the ranking of the most sent/recieved words of all time (Removes some filler words automatically such as a, i, the)
 ---
 
 To download snapchat data:
@@ -22,7 +21,6 @@ Run SnapchatStats.py
 Always open to suggestion and places to improve.
 Shows stats as a print statement, But im currently doing the stats side then will look into displaying data nicely
 
-Currently implementing most sent and recieved words of all time (Removing filler words)
 
 -Would be interesting to in the future implement:
   - Comparing the graphs of blocked friends with friends added

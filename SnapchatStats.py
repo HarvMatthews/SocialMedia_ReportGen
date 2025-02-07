@@ -1,7 +1,7 @@
 import os
 
 
-from MessageStats import FindTopMessages
+from MessageStats import FindTopMessages, TopWords, TopWords_Filtered
 
 amount = "a"
 while not amount.isdigit():
@@ -25,3 +25,19 @@ for i in range(2):
         people = Top5[Pos]
         print(Pos + 1, ' Recieved %d from %s' % (people[1], people[0]))
     print('\n')
+
+
+amount = "a"
+while not amount.isdigit():
+    print("How many ranks of top words of all time:")
+    amount = input()
+
+Words_Sorted = TopWords_Filtered(TopWords())
+TopAmount = Words_Sorted[((len(Words_Sorted)) - int(amount)):] #top 5
+print("This is sent and recieved")
+TopAmount.reverse()
+for Pos in range(len(TopAmount)):
+        word = TopAmount[Pos]
+        print(Pos + 1, '-> "%s" %d times' % (word[0], word[1]))
+   
+
