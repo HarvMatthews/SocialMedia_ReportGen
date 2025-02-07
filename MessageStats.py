@@ -56,6 +56,7 @@ def FindTopMessages(Amount: int, Type: int):
     return(Top_Amount, UserSent)
 
 
+
 def TopWords():
     Chats_Dir =  FindDir() +  "/json/chat_history.json"
     
@@ -73,10 +74,13 @@ def TopWords():
             #if chats["From"] == Findusername():
             #Only messages that have been sent from the users account
             Content = chats["Content"]
+            
             if type(Content) == str:
                 indivWords = Content.split(" ")
+
                 
                 for word in indivWords:
+                    word = word.lower()
                     #Adding the words to dict
                     if word not in WordsDict:
                         WordsDict[word] = 0
