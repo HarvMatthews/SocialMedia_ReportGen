@@ -1,6 +1,7 @@
 Very Simple Project used to self-learn git /GitHub
 
 Displays the ranking of your most messaged and snapped friends on Snapchat and the ranking of the most sent/recieved words of all time (Removes some filler words automatically such as a, i, the)
+
 ---
 
 To download snapchat data:
