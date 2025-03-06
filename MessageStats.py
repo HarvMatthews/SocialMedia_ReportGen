@@ -1,6 +1,6 @@
 import json
 import operator
-from BasicInfo import Find_SC_Username, Find_SC_Dir
+from BasicInfo import Find_SC_Username, Find_Dir
 
 
 #I could have TopMessages and Top people in one loop where I have a variable of like chats["Friends"] and chats["Contents"]
@@ -17,9 +17,9 @@ second being the users own stats (Username, amount of messages)
 '''
 def Find_SC_TopMessages(Amount: int, Type: int):
     if Type == 0:
-        Chats_Dir =  Find_SC_Dir() +  "/json/chat_history.json"
+        Chats_Dir =  Find_Dir() +  "/json/chat_history.json"
     elif Type == 1:
-        Chats_Dir =  Find_SC_Dir() +  "/json/snap_history.json"
+        Chats_Dir =  Find_Dir() +  "/json/snap_history.json"
 
     with open(Chats_Dir) as file:
         json_data = json.load(file)
@@ -63,7 +63,7 @@ def Find_SC_TopMessages(Amount: int, Type: int):
 
 
 def SC_TopWords():
-    Chats_Dir =  Find_SC_Dir() +  "/json/chat_history.json"
+    Chats_Dir =  Find_Dir() +  "/json/chat_history.json"
     
     with open(Chats_Dir) as file:
         json_data = json.load(file)
