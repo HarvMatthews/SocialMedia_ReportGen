@@ -1,6 +1,3 @@
-import os
-
-
 from MessageStats import FindTopMessages, TopWords, TopWords_Filtered
 
 amount = "a"

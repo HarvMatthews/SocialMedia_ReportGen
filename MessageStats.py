@@ -1,4 +1,3 @@
-import os
 import json
 import operator
 from BasicInfo import Findusername, FindDir
