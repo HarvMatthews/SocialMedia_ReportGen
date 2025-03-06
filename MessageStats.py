@@ -1,6 +1,6 @@
 import json
 import operator
-from BasicInfo import Findusername, FindDir
+from BasicInfo import Find_SC_Username, Find_SC_Dir
 
 
 #I could have TopMessages and Top people in one loop where I have a variable of like chats["Friends"] and chats["Contents"]
@@ -15,11 +15,11 @@ Returns a tuple with the
 first being an array of tuples of top messages (Username, Amount of messages)
 second being the users own stats (Username, amount of messages)
 '''
-def FindTopMessages(Amount: int, Type: int):
+def Find_SC_TopMessages(Amount: int, Type: int):
     if Type == 0:
-        Chats_Dir =  FindDir() +  "/json/chat_history.json"
+        Chats_Dir =  Find_SC_Dir() +  "/json/chat_history.json"
     elif Type == 1:
-        Chats_Dir =  FindDir() +  "/json/snap_history.json"
+        Chats_Dir =  Find_SC_Dir() +  "/json/snap_history.json"
 
     with open(Chats_Dir) as file:
         json_data = json.load(file)
@@ -42,7 +42,7 @@ def FindTopMessages(Amount: int, Type: int):
         
     #Removing the users own sent messages:
 
-    FindUser = Findusername() #So its not calling the fun every iteration
+    FindUser = Find_SC_Username() #So its not calling the fun every iteration
     UserSent = None
     Messages_Sorted_Filtered = []
     Messages_Sorted = sorted(MessagesDict.items(), key=operator.itemgetter(1))
@@ -62,8 +62,8 @@ def FindTopMessages(Amount: int, Type: int):
 
 
 
-def TopWords():
-    Chats_Dir =  FindDir() +  "/json/chat_history.json"
+def SC_TopWords():
+    Chats_Dir =  Find_SC_Dir() +  "/json/chat_history.json"
     
     with open(Chats_Dir) as file:
         json_data = json.load(file)
@@ -94,7 +94,7 @@ def TopWords():
     Words_Sorted = sorted(WordsDict.items(), key=operator.itemgetter(1))
     return(Words_Sorted)
 
-def TopWords_Filtered(TopWords):
+def SC_TopWords_Filtered(TopWords):
     filler_words = [
     'I', 'you', 'he', 'she', 'it', 'we', 'they',  
     'the', 'a', 'an', 'that', 'this', 'there',  

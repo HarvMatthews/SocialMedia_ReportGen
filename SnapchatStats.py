@@ -1,4 +1,4 @@
-from MessageStats import FindTopMessages, TopWords, TopWords_Filtered
+from MessageStats import Find_SC_TopMessages, SC_TopWords, SC_TopWords_Filtered
 
 amount = "a"
 while not amount.isdigit():
@@ -7,7 +7,7 @@ while not amount.isdigit():
 
 
 for i in range(2):
-    Top5Stats = FindTopMessages(int(amount), i)
+    Top5Stats = Find_SC_TopMessages(int(amount), i)
     Top5 = Top5Stats[0]
     User = Top5Stats[1]
     Top5.reverse()
@@ -29,7 +29,7 @@ while not amount.isdigit():
     print("How many ranks of top words of all time:")
     amount = input()
 
-Words_Sorted = TopWords_Filtered(TopWords())
+Words_Sorted = SC_TopWords_Filtered(SC_TopWords())
 TopAmount = Words_Sorted[((len(Words_Sorted)) - int(amount)):] #top 5
 print("This is sent and recieved")
 TopAmount.reverse()
