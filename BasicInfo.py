@@ -17,8 +17,5 @@ def Find_Instagram_Dir():
     items = os.listdir(Find_Dir())
     for item in items:
         if (item.find('.') == -1) and (item != "json"): #(Ensures is a folder) AND (Not json)
-            #print("   " + item)
-            return(item)
-    
-print(Find_SC_Username())
-print(Find_Instagram_Dir())
+            Instagram_Dir = Find_Dir() + "/" + item
+            return(Instagram_Dir)
