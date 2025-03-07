@@ -1,6 +1,7 @@
+import os
 import json
 import operator
-from BasicInfo import Find_SC_Username, Find_Dir
+from BasicInfo import Find_SC_Username, Find_Dir, Find_Instagram_Dir, Find_IG_Username
 
 
 #I could have TopMessages and Top people in one loop where I have a variable of like chats["Friends"] and chats["Contents"]
@@ -58,10 +59,6 @@ def Find_SC_TopMessages(Amount: int, Type: int):
     return(Top_Amount, UserSent)
 
 
-
-
-
-
 def SC_TopWords():
     Chats_Dir =  Find_Dir() +  "/json/chat_history.json"
     
@@ -109,4 +106,53 @@ def SC_TopWords_Filtered(TopWords):
             Words_Filtered.append(Word)
     return(Words_Filtered)
 
+def IG_DM_Files():
+    #If content contains word "Attachment" AND Sender == Users
+    File_Dirs = []
+    Messages_Dir = Find_Instagram_Dir() + "/your_instagram_activity/messages/inbox"
+    
+    items = os.listdir(Messages_Dir)
+    for MessageFile in items:
+        if MessageFile.find(".") == -1:
+            JsonFile = Messages_Dir + "/" + MessageFile + "/message_1.json"
+            File_Dirs.append(JsonFile)
+        
+    return(File_Dirs)
+            
 
+def IG_Groupchats():
+    Amount_GC = 0
+    for jsonFile in IG_DM_Files():
+        with open(jsonFile) as file:
+                json_data = json.load(file)
+                participants = json_data["participants"]
+                if(len(participants) > 2):
+                    Amount_GC += 1
+                
+    return(Amount_GC)
+
+def Sent_Memes():
+    AllPeople = {}
+    for jsonFile in IG_DM_Files():
+        Sent = 0
+        with open(jsonFile) as file:
+                json_data = json.load(file)
+                participants = json_data["participants"]
+                if(len(participants) <= 2):
+                    #Process here
+                    for message in json_data["messages"]:
+                        if message["sender_name"] == Find_IG_Username()[1]:
+                            content = message.get("content")
+                            if content is not None:
+                                if "attachment" in content:
+                                    Sent += 1
+                    if Sent > 0:
+                        AllPeople[(participants[0]["name"])] = Sent
+                        #AllPeople.append(((participants[0]["name"]), (Sent)))
+                        
+    people_sorted = sorted(AllPeople.items(), key=operator.itemgetter(1))
+    return(people_sorted)
+
+#TopSenders = Sent_Memes()
+#TopSenders.reverse()
+#print(TopSenders[0])

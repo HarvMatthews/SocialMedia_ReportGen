@@ -1,6 +1,6 @@
 import os
 import json
-from BasicInfo import Find_Instagram_Dir
+from BasicInfo import Find_Instagram_Dir, Find_Dir
 
 def Find_IG_Profile():
         #Get Profile Pictiures/Random image from snapchat
@@ -20,4 +20,11 @@ def Find_IG_Profile():
 
         return(Profile_Pic_Dir)
 
-#Find_IG_Profile()
+def Find_SC_Logo():
+        SC_Logo = os.path.dirname(os.path.abspath(__file__)) + "/images/Snapchat_Logo.jpg"
+        return(SC_Logo)
+
+def Find_IG_Logo():
+        IG_Logo = os.path.dirname(os.path.abspath(__file__)) + "/images/Instagram_Logo.jpg"
+        return(IG_Logo)
+
