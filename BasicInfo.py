@@ -27,4 +27,3 @@ def Find_IG_Username():
         Username = json_data["profile_user"][0]["string_map_data"]["Username"]["value"]
         Name = json_data["profile_user"][0]["string_map_data"]["Name"]["value"]
         return((Username, Name))
-

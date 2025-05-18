@@ -58,7 +58,6 @@ def Find_SC_TopMessages(Amount: int, Type: int):
     #print(Top5)
     return(Top_Amount, UserSent)
 
-
 def SC_TopWords():
     Chats_Dir =  Find_Dir() +  "/json/chat_history.json"
     
@@ -118,7 +117,6 @@ def IG_DM_Files():
             File_Dirs.append(JsonFile)
         
     return(File_Dirs)
-            
 
 def IG_Groupchats():
     Amount_GC = 0
@@ -131,7 +129,7 @@ def IG_Groupchats():
                 
     return(Amount_GC)
 
-def Sent_Memes():
+def Sent_Attachments():
     AllPeople = {}
     for jsonFile in IG_DM_Files():
         Sent = 0
@@ -153,6 +151,6 @@ def Sent_Memes():
     people_sorted = sorted(AllPeople.items(), key=operator.itemgetter(1))
     return(people_sorted)
 
-#TopSenders = Sent_Memes()
+#TopSenders = Sent_Attachments()
 #TopSenders.reverse()
 #print(TopSenders[0])

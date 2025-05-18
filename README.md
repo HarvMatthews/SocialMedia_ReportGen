@@ -25,3 +25,5 @@ Go to settings -> Scroll to bottom -> My Data -> Select the options shown below 
 Have the downloaded JSON file in same location as program stored.
 Run SnapchatStats.py
 
+Need to check that file/JSON objects exist (Add error handling)
+Have a Python script that has ALL the FileDirs, to make it easier to update if needed
