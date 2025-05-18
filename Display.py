@@ -51,12 +51,17 @@ def Display(canvas):
     canvas.drawInlineImage(Find_SC_Logo(), 460,660, width=153,height=86) 
     canvas.drawInlineImage(Find_IG_Logo(), 10,315-45, width=90,height=90) 
 
-    #The Header
+    #The Header Section
     name = Find_IG_Username()[1]
     #print(name[1])
     canvas.setFont("Helvetica", 30)
     WelcomeMessage = name + "'s Social Media Report"
     canvas.drawString(10,812, WelcomeMessage)
+    canvas.setFont("Helvetica", 12)
+    canvas.drawString(10,790, "Little Summary of some Statistics from " + name + "s' Instagram and Snapchat data.") 
+    canvas.drawString(10,775, "*All Snapchat Data is only what is saved in Chat")
+    canvas.drawString(10,760, "https://github.com/HarvMatthews/SocialMedia_ReportGen")
+
     
     # Snapchat Section:
     #Messages:
