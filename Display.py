@@ -9,16 +9,20 @@ from InstagramStats import findBlocked, AmountPeopleWhoDontFollowBack, Unfollowe
 
 #Snapchat Data
 #Messages
-Top5Stats = Find_SC_TopMessages(int(5), 0)
+Top5Stats = Find_SC_TopMessages(int(6), 0)
 TopMessages = Top5Stats[0]
 TopMessages.reverse()
 Users_SentM = Top5Stats[1]
+
+#To remove the top person uncomment line below
+del TopMessages[0]
 
 #Snaps
 Top5Snaps = Find_SC_TopMessages(int(5), 1)
 TopSnaps = Top5Snaps[0]
 TopSnaps.reverse()
 Users_SentS = Top5Snaps[1]
+
 
 #Top Word
 SC_Topwords = SC_TopWords_Filtered(SC_TopWords())
@@ -89,7 +93,7 @@ def Display(canvas):
     
     # -- The Pie Chart ---
     #The Messages
-    renderPDF.draw(makeThePie((TopMessages[0][1],TopMessages[1][1],TopMessages[2][1],TopMessages[3][1],TopMessages[4][1]),(TopMessages[0][0],TopMessages[1][0],TopMessages[2][0],TopMessages[3][0],TopMessages[4][0])), canvas, 430, 500)
+    renderPDF.draw(makeThePie((TopMessages[0][1],TopMessages[1][1],TopMessages[2][1],TopMessages[3][1],TopMessages[4][1]),(TopMessages[0][0],TopMessages[1][0],TopMessages[2][0],TopMessages[3][0],TopMessages[4][0])), canvas, 432, 495)
     #The Snaps
     renderPDF.draw(makeThePie((TopSnaps[0][1],TopSnaps[1][1],TopSnaps[2][1],TopSnaps[3][1],TopSnaps[4][1]),(TopSnaps[0][0],TopSnaps[1][0],TopSnaps[2][0],TopSnaps[3][0],TopSnaps[4][0])), canvas, 430, 385)
 
@@ -149,10 +153,8 @@ def makeThePie(data, label):
     thePie.data = data
     thePie.labels = label
     thePie.sideLabels = True
-    thePie.simpleLabels = False
-    thePie.slices.strokeWidth = 0.1
-    
-    theDrawingOfPie.add(thePie)
+    thePie.simpleLabels = 0
+   
     return theDrawingOfPie
 
 from reportlab.graphics.charts.barcharts import VerticalBarChart
