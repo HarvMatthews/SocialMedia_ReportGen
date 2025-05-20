@@ -5,7 +5,7 @@ from reportlab.graphics import renderPDF
 from BasicInfo import Find_IG_Username
 from Images import Find_IG_Profile, Find_SC_Logo, Find_IG_Logo
 from MessageStats import Find_SC_TopMessages, SC_TopWords_Filtered, SC_TopWords, Sent_Attachments, IG_Groupchats
-from InstagramStats import findBlocked, AmountPeopleWhoDontFollowBack
+from InstagramStats import findBlocked, AmountPeopleWhoDontFollowBack, UnfollowedInWeeks, LikesOverYears
 
 #Snapchat Data
 #Messages
@@ -13,19 +13,33 @@ Top5Stats = Find_SC_TopMessages(int(5), 0)
 TopMessages = Top5Stats[0]
 TopMessages.reverse()
 Users_SentM = Top5Stats[1]
+
 #Snaps
 Top5Snaps = Find_SC_TopMessages(int(5), 1)
 TopSnaps = Top5Snaps[0]
 TopSnaps.reverse()
 Users_SentS = Top5Snaps[1]
+
 #Top Word
 SC_Topwords = SC_TopWords_Filtered(SC_TopWords())
 SC_Topwords.reverse()
 SC_TopWord = SC_Topwords[0]
+
 #IG Top sender
 IG_TopSenders = Sent_Attachments()
 IG_TopSenders.reverse()
 IG_Top_Sender = IG_TopSenders[0]
+
+#IG How Many People Unfollowed In weeks
+UnfollowedStats = UnfollowedInWeeks()
+PeopleUnfollowed = UnfollowedStats[0]
+InHowManyWeeks = UnfollowedStats[1]
+
+#Likes Over Years Stats
+LikesOverYearsStats = LikesOverYears()
+AllLikes = LikesOverYearsStats[0]
+YearsArray = LikesOverYearsStats[1]
+DataArray = LikesOverYearsStats[2]
 
 moveDown = + 90
 
@@ -58,7 +72,7 @@ def Display(canvas):
     WelcomeMessage = name + "'s Social Media Report"
     canvas.drawString(10,812, WelcomeMessage)
     canvas.setFont("Helvetica", 12)
-    canvas.drawString(10,790, "Little Summary of some Statistics from " + name + "s' Instagram and Snapchat data.") 
+    canvas.drawString(10,790, "Little Summary of some Statistics from " + name + "'s Instagram and Snapchat data.") 
     canvas.drawString(10,775, "*All Snapchat Data is only what is saved in Chat")
     canvas.drawString(10,760, "https://github.com/HarvMatthews/SocialMedia_ReportGen")
 
@@ -104,12 +118,21 @@ def Display(canvas):
     canvas.drawString(20,280-45, "You've Sent " + IG_Top_Sender[0] + " " + str(IG_Top_Sender[1]) + " Attachments")
     canvas.drawString(300,245-45, "You've Blocked " + str(findBlocked()) + " People")
     canvas.drawString(20,210-45, str(AmountPeopleWhoDontFollowBack()) +  " Accounts Don't Follow you back ")
+    canvas.drawString(200,180-45, "Unfollowed " + str(PeopleUnfollowed) +  " People In the past " + str(InHowManyWeeks) + " weeks")
+
     canvas.drawString(250,50,"Group Chats")
 
 
     #Increasing Size
     canvas.setFont("Helvetica", 50)
-    canvas.drawString(250,70, str(IG_Groupchats())) #Group Chats
+    canvas.drawString(250,70, "In " + str(IG_Groupchats())) #Group Chats
+    
+    #Bar Chart
+    canvas.setFont("Helvetica", 10)
+
+    renderPDF.draw(MakeTheBar(),canvas,30,40)
+    canvas.drawString(30,15, "Amount Of Likes Given in Years")
+
 
     #path = canvas.beginPath()
     #path.rect(100,200,150,90)
@@ -128,9 +151,26 @@ def makeThePie(data, label):
     thePie.sideLabels = True
     thePie.simpleLabels = False
     thePie.slices.strokeWidth = 0.1
+    
     theDrawingOfPie.add(thePie)
     return theDrawingOfPie
 
+from reportlab.graphics.charts.barcharts import VerticalBarChart
+ 
+def MakeTheBar():
+    theBar = VerticalBarChart()
+
+    theBar.x = 0
+    theBar.y = 0
+    theBar.width = 220
+    theBar.height = 110
+
+    theBar.data = [DataArray]
+    theBar.categoryAxis.categoryNames = YearsArray
+    
+    theBarAsDrawing = Drawing(220,110)
+    theBarAsDrawing.add(theBar)
+    return theBarAsDrawing
 
 
 
