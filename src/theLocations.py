@@ -1,16 +1,14 @@
 import os
 
-#in this file will be all the paths needed throughout the project
+#This File has all the paths needed throughout the project
 #If SC or IG change the layout of the JSON file, this file updates
+Path_Of_Here = os.path.dirname(os.path.abspath(__file__))
+Path_Of_Project = os.path.dirname(os.path.abspath(Path_Of_Here))
+print(Path_Of_Project)
+theDirOfData = os.path.join(Path_Of_Project, "DataInsideHere")
 
 
-pathOfWhole = os.path.dirname(os.path.abspath(__file__))
-
-
-theDirOfData = os.path.join(pathOfWhole, "DataInsideHere")
-print(theDirOfData)
-
-#Snapchat
+#Snapchat Paths
 
 def Find_SC_Dir():
     SCDir = os.path.join(theDirOfData,"json")
@@ -30,8 +28,8 @@ def SC_Snap_History_JSON():
     SC_Snap_History_JSON = os.path.join(SC_Dir,"snap_history.json")
     return SC_Snap_History_JSON
 
-#Instagram
 
+#Instagram Paths
 
 def Find_Instagram_Dir():
     items = os.listdir(theDirOfData)
@@ -76,10 +74,13 @@ def IG_Messages_File():
     IG_Messages_File = os.path.join(Instagram_Dir,"your_instagram_activity/messages/inbox")
     return IG_Messages_File
 
+
+
+
 def IG_Profile():
     IG_Profile = os.path.join(Instagram_Dir,"media/profile")
     return IG_Profile
 
 def ImageLoc():
-    ImageLoc = os.path.join(pathOfWhole,"images")
+    ImageLoc = os.path.join(Path_Of_Project,"assests/images")
     return ImageLoc
