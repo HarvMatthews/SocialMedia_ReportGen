@@ -1,8 +1,8 @@
 import os
 import json
 import operator
-from BasicInfo import Find_SC_Username, Find_IG_Username
-from theLocations import SC_Chat_History_JSON, SC_Snap_History_JSON, IG_Messages_File
+from src.BasicInfo import Find_SC_Username, Find_IG_Username
+from src.theLocations import SC_Chat_History_JSON, SC_Snap_History_JSON, IG_Messages_File
 
 
 #I could have TopMessages and Top people in one loop where I have a variable of like chats["Friends"] and chats["Contents"]

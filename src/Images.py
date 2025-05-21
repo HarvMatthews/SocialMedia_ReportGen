@@ -1,5 +1,5 @@
 import os
-from theLocations import IG_Profile, ImageLoc
+from src.theLocations import IG_Profile, ImageLoc
 
 def Find_IG_Profile():
         #Get Profile Pictiures/Random image from snapchat

@@ -2,10 +2,10 @@ from reportlab.pdfgen import canvas
 from reportlab.graphics.shapes import Drawing
 from reportlab.graphics.charts.piecharts import Pie
 from reportlab.graphics import renderPDF
-from BasicInfo import Find_IG_Username
-from Images import Find_IG_Profile, Find_SC_Logo, Find_IG_Logo
-from MessageStats import Find_SC_TopMessages, SC_TopWords_Filtered, SC_TopWords, Sent_Attachments, IG_Groupchats
-from InstagramStats import findBlocked, AmountPeopleWhoDontFollowBack, UnfollowedInWeeks, LikesOverYears
+from src.BasicInfo import Find_IG_Username
+from src.Images import Find_IG_Profile, Find_SC_Logo, Find_IG_Logo
+from src.MessageStats import Find_SC_TopMessages, SC_TopWords_Filtered, SC_TopWords, Sent_Attachments, IG_Groupchats
+from src.InstagramStats import findBlocked, AmountPeopleWhoDontFollowBack, UnfollowedInWeeks, LikesOverYears
 
 #Snapchat Data
 #Messages
@@ -175,8 +175,8 @@ def MakeTheBar():
     return theBarAsDrawing
 
 
-
-Report = canvas.Canvas("Report.pdf")
-Display(Report)
-Report.showPage()
-Report.save()
+def Generate():
+    Report = canvas.Canvas("Report.pdf")
+    Display(Report)
+    Report.showPage()
+    Report.save()

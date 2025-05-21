@@ -1,6 +1,6 @@
 import os
 import json
-from theLocations import SC_Account_JSON, Find_IG_PersonalInfo_JSON
+from src.theLocations import SC_Account_JSON, Find_IG_PersonalInfo_JSON
 
 def Find_Dir():
     Dir = os.path.dirname(os.path.abspath(__file__)) + "/DataInsideHere"
