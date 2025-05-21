@@ -1,8 +1,8 @@
 import os
 import json
 import operator
-from BasicInfo import Find_SC_Username, Find_Dir, Find_IG_Username
-from theLocations import Find_Instagram_Dir
+from BasicInfo import Find_SC_Username, Find_IG_Username
+from theLocations import SC_Chat_History_JSON, SC_Snap_History_JSON, IG_Messages_File
 
 
 #I could have TopMessages and Top people in one loop where I have a variable of like chats["Friends"] and chats["Contents"]
@@ -19,9 +19,9 @@ second being the users own stats (Username, amount of messages)
 '''
 def Find_SC_TopMessages(Amount: int, Type: int):
     if Type == 0:
-        Chats_Dir =  Find_Dir() +  "/json/chat_history.json"
+        Chats_Dir =  SC_Chat_History_JSON()
     elif Type == 1:
-        Chats_Dir =  Find_Dir() +  "/json/snap_history.json"
+        Chats_Dir =  SC_Snap_History_JSON()
 
     with open(Chats_Dir) as file:
         json_data = json.load(file)
@@ -60,7 +60,7 @@ def Find_SC_TopMessages(Amount: int, Type: int):
     return(Top_Amount, UserSent)
 
 def SC_TopWords():
-    Chats_Dir =  Find_Dir() +  "/json/chat_history.json"
+    Chats_Dir =  SC_Chat_History_JSON()
     
     with open(Chats_Dir) as file:
         json_data = json.load(file)
@@ -109,7 +109,7 @@ def SC_TopWords_Filtered(TopWords):
 def IG_DM_Files():
     #If content contains word "Attachment" AND Sender == Users
     File_Dirs = []
-    Messages_Dir = Find_Instagram_Dir() + "/your_instagram_activity/messages/inbox"
+    Messages_Dir = IG_Messages_File()
     
     items = os.listdir(Messages_Dir)
     for MessageFile in items:

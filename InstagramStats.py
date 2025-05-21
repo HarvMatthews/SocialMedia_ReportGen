@@ -1,8 +1,7 @@
 import time
 import datetime
 import json
-from BasicInfo import Find_SC_Username, Find_Dir, Find_IG_Username
-from theLocations import Find_Instagram_Dir, IG_Friends_Folder, IG_Blocked_Profiles_JSON, IG_Followers_JSON, IG_Following_JSON, IG_Unfollowed_Profiles_JSON, IG_LikedPost_JSON
+from theLocations import IG_Friends_Folder, IG_Blocked_Profiles_JSON, IG_Followers_JSON, IG_Following_JSON, IG_Unfollowed_Profiles_JSON, IG_LikedPost_JSON
 
 friendsFolder = IG_Friends_Folder()
 

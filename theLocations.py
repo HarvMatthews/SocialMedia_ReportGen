@@ -16,10 +16,19 @@ def Find_SC_Dir():
     SCDir = os.path.join(theDirOfData,"json")
     return SCDir
 
+SC_Dir = Find_SC_Dir()
+
 def SC_Account_JSON():
-    SC_Account_JSON = os.path.join(theDirOfData, "json/account.json")
+    SC_Account_JSON = os.path.join(SC_Dir, "account.json")
     return SC_Account_JSON
 
+def SC_Chat_History_JSON():
+    SC_Chat_History_JSON = os.path.join(SC_Dir,"chat_history.json")
+    return SC_Chat_History_JSON
+
+def SC_Snap_History_JSON():
+    SC_Snap_History_JSON = os.path.join(SC_Dir,"snap_history.json")
+    return SC_Snap_History_JSON
 
 #Instagram
 
@@ -62,3 +71,15 @@ def IG_Following_JSON():
 def IG_Unfollowed_Profiles_JSON():
     IG_Unfollowed_Profiles_JSON = os.path.join(FriendsFolder,"recently_unfollowed_profiles.json")
     return IG_Unfollowed_Profiles_JSON
+
+def IG_Messages_File():
+    IG_Messages_File = os.path.join(Instagram_Dir,"your_instagram_activity/messages/inbox")
+    return IG_Messages_File
+
+def IG_Profile():
+    IG_Profile = os.path.join(Instagram_Dir,"media/profile")
+    return IG_Profile
+
+def ImageLoc():
+    ImageLoc = os.path.join(pathOfWhole,"images")
+    return ImageLoc
