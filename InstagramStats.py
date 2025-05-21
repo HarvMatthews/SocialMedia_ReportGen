@@ -1,9 +1,10 @@
 import time
 import datetime
 import json
-from BasicInfo import Find_SC_Username, Find_Dir, Find_Instagram_Dir, Find_IG_Username
+from BasicInfo import Find_SC_Username, Find_Dir, Find_IG_Username
+from theLocations import Find_Instagram_Dir, IG_Friends_Folder
 
-friendsFolder = Find_Instagram_Dir() + "/connections/followers_and_following"
+friendsFolder = IG_Friends_Folder()
 
 def findBlocked():
     blockedInfo = friendsFolder + "/blocked_profiles.json"

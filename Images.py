@@ -1,6 +1,6 @@
 import os
 import json
-from BasicInfo import Find_Instagram_Dir, Find_Dir
+from theLocations import Find_Instagram_Dir
 
 def Find_IG_Profile():
         #Get Profile Pictiures/Random image from snapchat
