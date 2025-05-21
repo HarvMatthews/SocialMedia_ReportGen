@@ -2,13 +2,12 @@ import time
 import datetime
 import json
 from BasicInfo import Find_SC_Username, Find_Dir, Find_IG_Username
-from theLocations import Find_Instagram_Dir, IG_Friends_Folder
+from theLocations import Find_Instagram_Dir, IG_Friends_Folder, IG_Blocked_Profiles_JSON, IG_Followers_JSON, IG_Following_JSON, IG_Unfollowed_Profiles_JSON, IG_LikedPost_JSON
 
 friendsFolder = IG_Friends_Folder()
 
 def findBlocked():
-    blockedInfo = friendsFolder + "/blocked_profiles.json"
-    with open(blockedInfo) as file:
+    with open(IG_Blocked_Profiles_JSON()) as file:
         json_data = json.load(file)
         blocked = json_data["relationships_blocked_users"]
         #print(blocked)
@@ -18,16 +17,14 @@ def findBlocked():
 #print(findBlocked())
 
 def AmountPeopleWhoDontFollowBack():
-    followersDir = friendsFolder + "/followers_1.json"
-    followingDir = friendsFolder + "/following.json"
     followers = []
     followingList = []
     PeopleWhoDontFollowBack = []
 
-    with open(followersDir) as followersFile:
+    with open(IG_Followers_JSON()) as followersFile:
         followersData = json.load(followersFile)
     
-    with open(followingDir) as followingFile:
+    with open(IG_Following_JSON()) as followingFile:
         followingData = json.load(followingFile)
 
     for follower in followersData:
@@ -48,8 +45,7 @@ def AmountPeopleWhoDontFollowBack():
     return len(PeopleWhoDontFollowBack)
 
 def UnfollowedInWeeks():
-    UnfollowedDir = friendsFolder + "/recently_unfollowed_profiles.json"
-    with open(UnfollowedDir) as file:
+    with open(IG_Unfollowed_Profiles_JSON()) as file:
         json_data = json.load(file)
         unfollowed = json_data["relationships_unfollowed_users"]
         listOfTimes = []
@@ -69,8 +65,7 @@ def UnfollowedInWeeks():
 
 #Returns Tuble(Int, Dict["Year":int])
 def LikesOverYears():
-    likesDir = Find_Instagram_Dir() + "/your_instagram_activity/likes/liked_posts.json"
-    with open(likesDir) as file:
+    with open(IG_LikedPost_JSON()) as file:
         json_data = json.load(file)
         allLikes = json_data["likes_media_likes"]
         yearLikesDict = {}
@@ -92,8 +87,6 @@ def LikesOverYears():
   
 
     return([amountOfLikes, YearsArray, data])
-
-LikesOverYears()
 
 
 

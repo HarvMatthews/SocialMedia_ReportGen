@@ -1,5 +1,9 @@
 import os
 
+#in this file will be all the paths needed throughout the project
+#If SC or IG change the layout of the JSON file, this file updates
+
+
 pathOfWhole = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -26,11 +30,35 @@ def Find_Instagram_Dir():
         if (item.find('.') == -1) and (item != "json"): #(Ensures is a folder) AND (Not json)
             Instagram_Dir = theDirOfData + "/" + item
             return(Instagram_Dir)
+        
+def IG_Friends_Folder():
+    IG_Friends_Folder = os.path.join(Instagram_Dir,"connections/followers_and_following")
+    return IG_Friends_Folder
+
+#This is so its not calling the function multiple times
+Instagram_Dir = Find_Instagram_Dir()
+FriendsFolder = IG_Friends_Folder()
+
+def IG_LikedPost_JSON():
+    IG_LikedPost_JSON = os.path.join(Instagram_Dir,"your_instagram_activity/likes/liked_posts.json")
+    return IG_LikedPost_JSON
 
 def Find_IG_PersonalInfo_JSON():
-    Find_IG_PersonalInfo_JSON = os.path.join(Find_Instagram_Dir(), "personal_information/personal_Information/personal_information.json")
+    Find_IG_PersonalInfo_JSON = os.path.join(Instagram_Dir, "personal_information/personal_Information/personal_information.json")
     return Find_IG_PersonalInfo_JSON
 
-def IG_Friends_Folder():
-    IG_Friends_Folder = os.path.join(Find_Instagram_Dir(),"connections/followers_and_following")
-    return IG_Friends_Folder
+def IG_Blocked_Profiles_JSON():
+    IG_Blocked_Profiles_JSON = os.path.join(FriendsFolder, "blocked_profiles.json")
+    return IG_Blocked_Profiles_JSON
+
+def IG_Followers_JSON():
+    IG_Followers_JSON = os.path.join(FriendsFolder, "followers_1.json")
+    return IG_Followers_JSON
+
+def IG_Following_JSON():
+    IG_Following_JSON = os.path.join(FriendsFolder, "following.json")
+    return IG_Following_JSON
+
+def IG_Unfollowed_Profiles_JSON():
+    IG_Unfollowed_Profiles_JSON = os.path.join(FriendsFolder,"recently_unfollowed_profiles.json")
+    return IG_Unfollowed_Profiles_JSON
