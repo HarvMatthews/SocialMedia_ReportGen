@@ -154,7 +154,7 @@ def makeThePie(data, label):
     thePie.labels = label
     thePie.sideLabels = True
     thePie.simpleLabels = 0
-   
+    theDrawingOfPie.add(thePie)
     return theDrawingOfPie
 
 from reportlab.graphics.charts.barcharts import VerticalBarChart
