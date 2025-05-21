@@ -15,7 +15,7 @@ TopMessages.reverse()
 Users_SentM = Top5Stats[1]
 
 #To remove the top person uncomment line below
-del TopMessages[0]
+#del TopMessages[0]
 
 #Snaps
 Top5Snaps = Find_SC_TopMessages(int(5), 1)
